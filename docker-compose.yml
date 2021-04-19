@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  portainer:
+    image: "portainer/portainer-ce"
+    container_name: "portainer-local"
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    restart: "always"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  rabbit:
+    image: "rabbitmq:3-management"
+    container_name: "rabbitmq-management-local"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+volumes: 
+  portainer_data: 
